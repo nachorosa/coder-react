@@ -1,24 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import DaisyNavBar from './components/DaisyNavBar';
 
 function App() {
+
+    const styles = {
+
+      header: "text-red-600 bg-slate-300 text-4xl line-through"
+
+    }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Bienvenido a <code>Mi Futura Tienda</code> online!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <DaisyNavBar/>
+
+    <h1 className={styles.header}>TIENDA DEL FUTURO EN PROGRESO!</h1>
+
     </div>
+
   );
 }
 

@@ -1,3 +1,5 @@
+import ItemCount from "./ItemCount"
+
 const Producto = ( {name, price} ) => {
   return (
     <div class="card w-96 bg-base-100 shadow-xl">
@@ -6,6 +8,9 @@ const Producto = ( {name, price} ) => {
     <h2 class="card-title">{name}</h2>
     <p>$ {price}</p>
     <div class="card-actions justify-end">
+    
+      <ItemCount/>
+    
       <button class="btn btn-primary">Buy Now</button>
     </div>
   </div>

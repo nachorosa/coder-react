@@ -3,7 +3,9 @@ import './App.css';
 import DaisyNavBar from './components/DaisyNavBar';
 import FondoPrincipal from './components/FondoPrincipal';
 import Producto from './components/Producto';
-import ItemListContainer from './components/ItemListContainer.js';
+//import ItemListContainer from './components/ItemListContainer.js';
+import CardNew from './components/CardNew';
+
 
 function App() {
 
@@ -16,17 +18,17 @@ function App() {
 
     <DaisyNavBar/>
 
-
-
     <h1 className={styles.header}>TOMAR-YA!</h1>
     <FondoPrincipal/>
  
-    <ItemListContainer>
+    {/* <ItemListContainer>
     <Producto name='nike' price='35000'/>
     <Producto name='adidas' price='30000'/>
     <Producto name='rebook' price='27000'/>
-    </ItemListContainer>
+    </ItemListContainer> */}
 
+
+    <CardNew otroComponente={Producto}></CardNew>
 
     </div>
 

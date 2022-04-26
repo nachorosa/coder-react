@@ -1,0 +1,13 @@
+.tienda {
+    /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 350px);
+  justify-content: center;
+  gap: 30px 60px;
+  margin: 40px 20px;
+  }
+
+.img-card{
+    height: 250px;
+    width: 200px;
+}

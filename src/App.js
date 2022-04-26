@@ -2,9 +2,9 @@
 import './App.css';
 import DaisyNavBar from './components/DaisyNavBar';
 import FondoPrincipal from './components/FondoPrincipal';
-import Producto from './components/Producto';
-//import ItemListContainer from './components/ItemListContainer.js';
-import CardNew from './components/CardNew';
+// import Producto from './components/Producto';
+import ItemListContainer from './components/ItemListContainer.js';
+//import CardNew from './components/CardNew';
 
 
 function App() {
@@ -28,7 +28,10 @@ function App() {
     </ItemListContainer> */}
 
 
-    <CardNew otroComponente={Producto}></CardNew>
+    {/* <CardNew otroComponente={Producto}></CardNew> */}
+
+
+    <ItemListContainer/>
 
     </div>
 

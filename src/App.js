@@ -1,9 +1,13 @@
 // import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import DaisyNavBar from './components/DaisyNavBar';
-import FondoPrincipal from './components/FondoPrincipal';
+// import FondoPrincipal from './components/FondoPrincipal';
+import Inicio from './components/Inicio';
+import ItemDetail from './components/ItemDetail';
+import ItemDetailContainer from './components/ItemDetailContainer';
 // import Producto from './components/Producto';
-import ItemListContainer from './components/ItemListContainer.js';
+// import ItemListContainer from './components/ItemListContainer.js';
 //import CardNew from './components/CardNew';
 
 
@@ -14,26 +18,24 @@ function App() {
     }
 
   return (
+
+    <BrowserRouter>
+    
     <div className="App">
-
-    <DaisyNavBar/>
-
-    <h1 className={styles.header}>TOMAR-YA!</h1>
-    <FondoPrincipal/>
+        <DaisyNavBar/>
  
-    {/* <ItemListContainer>
-    <Producto name='nike' price='35000'/>
-    <Producto name='adidas' price='30000'/>
-    <Producto name='rebook' price='27000'/>
-    </ItemListContainer> */}
+        <h1 className={styles.header}>TOMAR-YA!</h1>
+      
+      <Routes>
+        
+        
+      <Route path="/" element={<Inicio/> } />
+      <Route path="/item/:Id" element={<ItemDetailContainer/> } />
+ 
 
-
-    {/* <CardNew otroComponente={Producto}></CardNew> */}
-
-
-    <ItemListContainer/>
-
+      </Routes>
     </div>
+    </BrowserRouter>
 
   );
 }

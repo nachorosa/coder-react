@@ -1,14 +1,12 @@
-// import logo from './logo.svg';
+import logo from './logo.svg';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import DaisyNavBar from './components/DaisyNavBar';
-// import FondoPrincipal from './components/FondoPrincipal';
 import Inicio from './components/Inicio';
-import ItemDetail from './components/ItemDetail';
 import ItemDetailContainer from './components/ItemDetailContainer';
-// import Producto from './components/Producto';
-// import ItemListContainer from './components/ItemListContainer.js';
-//import CardNew from './components/CardNew';
+//import ItemListContainer from './components/ItemListContainer';
+import ItemCategory from './components/ItemCategory';
+
 
 
 function App() {
@@ -28,10 +26,9 @@ function App() {
       
       <Routes>
         
-        
       <Route path="/" element={<Inicio/> } />
+      <Route path="/category/:CatId" element={<ItemCategory/> } />
       <Route path="/item/:Id" element={<ItemDetailContainer/> } />
- 
 
       </Routes>
     </div>

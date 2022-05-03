@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ItemCount from './ItemCount'
 import { productList } from '../data/data.js';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ItemDetail = () => {
 
@@ -24,9 +24,12 @@ const ItemDetail = () => {
         })
     }, [Id])
     
+ 
 
   return (
       <>
+
+        <div className="tienda">
 
         
             <div className=" card w-96 bg-base-100 shadow-xl">
@@ -38,7 +41,8 @@ const ItemDetail = () => {
 
                         <ItemCount stock={prod.stock} initial={1} />
 
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn btn-primary" >Buy Now</button>
+                        <Link to={`/`}><button className="btn btn-primary">Volver</button></Link>
 
 
                     </div>
@@ -46,8 +50,15 @@ const ItemDetail = () => {
             </div>
 
 
+        </div>
       </>
   )
 }
+
+
+
+
+
+
 
 export default ItemDetail

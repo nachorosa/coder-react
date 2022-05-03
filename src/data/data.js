@@ -3,9 +3,10 @@ export const productList = [
       name: 'pepsi',
       price: 240,
       img:
-        'https://assets.stickpng.com/images/580b57fcd9996e24bc43c1dd.png',
+        'https://carrefourar.vtexassets.com/arquivos/ids/191222/7791813555056_01.jpg?v=637511787882700000',
       stock: 7,
       id: 1,
+      categoria: "bebidas-sin-alcohol",
     },
     {
       name: 'coca',
@@ -14,14 +15,16 @@ export const productList = [
         'https://w7.pngwing.com/pngs/574/913/png-transparent-coca-cola-coca-cola-bottle-glass-bottles.png',
       stock: 10,
       id: 2,
+      categoria: "bebidas-sin-alcohol",
     },
     {
-      name: 'agua',
-      price: 275,
+      name: 'fernet',
+      price: 900,
       img:
-        'https://us.123rf.com/450wm/bystudio/bystudio1908/bystudio190800228/129878141-botella-de-pl%C3%A1stico-de-pl%C3%A1stico-aislado-sobre-un-fondo-blanco-.jpg?ver=6',
+        'https://www.res.com.ar/media/catalog/product/cache/dbcd7fcd96d4e43f69e3e3703d135006/9/2/92_2048x2048.jpg',
       stock: 6,
       id: 3,
+      categoria: "bebidas-con-alcohol",
     },
   ];
   

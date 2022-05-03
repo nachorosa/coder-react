@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ItemCount from './ItemCount.js';
+//import ItemCount from './ItemCount.js';
 
 import './styles/styles.css';
 
@@ -16,10 +16,8 @@ const Item = ({ name, img, price, id, stock }) => {
                     <p>$ {price} </p>
                     <div className="card-actions justify-end">
 
-                        <ItemCount stock={stock} initial={1} />
+                        {/* <ItemCount stock={stock} initial={1} /> */}
                         <Link to={`/item/${id}`}><button className="btn btn-primary">Informacion</button></Link>
-                        <button className="btn btn-primary">Buy Now</button>
-
 
                     </div>
                 </div>

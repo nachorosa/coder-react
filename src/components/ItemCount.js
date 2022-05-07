@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 
-const ItemCount = ({ initial, stock}) => {
+const ItemCount = ({ initial, stock, onAdd}) => {
   //hook de estado
   const [number, setNumber] = useState(initial);
 
@@ -13,14 +13,14 @@ const ItemCount = ({ initial, stock}) => {
   return (
     <div>
       <div>
-        <button
+        <button className="btn btn-primary" 
           onClick={() => addProduct(-1)}
           disabled={number === initial ? true : null}
         >
           -
         </button>
         <span>{number}</span>
-        <button
+        <button className="btn btn-primary" 
           onClick={() => addProduct(+1)}
           disabled={number === stock ? true : null}
         >
@@ -28,9 +28,11 @@ const ItemCount = ({ initial, stock}) => {
         </button>
       </div>
 
-      <button
+      <button className="btn btn-primary" 
         disabled={stock === 0 ? true : null}
-      >
+        onClick={() => onAdd(number)}
+        >
+        Añadir al Carrito
       </button>
     </div>
   );

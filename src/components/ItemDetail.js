@@ -24,7 +24,12 @@ const ItemDetail = () => {
         })
     }, [Id])
     
- 
+    const [enCarrito , setEnCarrito] = useState(false)
+
+    const onAdd = (count) => {
+        setEnCarrito(true)
+        console.log(count)
+    }
 
   return (
       <>
@@ -37,11 +42,20 @@ const ItemDetail = () => {
                 <div class="card-body">
                     <h2 className="card-title">{prod.name}</h2>
                     <p>$ {prod.price} </p>
+                    <p>Stock: {prod.stock}</p>
                     <div className="card-actions justify-end">
+                        
 
-                        <ItemCount stock={prod.stock} initial={1} />
+                        {enCarrito ? (
+                             <div>
+                                <p>El producto esta en el Carrito!</p>
+                                 <Link to={`/cart`}><button className="btn btn-primary">VER CARRITO</button></Link>
+                             </div>
+                            ) : (
+                                <ItemCount stock={prod.stock} initial={1} onAdd={onAdd} />
+                                )}
+                                
 
-                        <button className="btn btn-primary" >Buy Now</button>
                         <Link to={`/`}><button className="btn btn-primary">Volver</button></Link>
 
 

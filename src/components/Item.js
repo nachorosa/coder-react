@@ -17,7 +17,7 @@ const Item = ({ name, img, price, id, stock }) => {
                     <div className="card-actions justify-end">
 
                         {/* <ItemCount stock={stock} initial={1} /> */}
-                        <Link to={`/item/${id}`}><button className="btn btn-primary">Informacion</button></Link>
+                        <Link to={`/item/${id}`}><button className="btn btn-primary">VER MAS</button></Link>
 
                     </div>
                 </div>

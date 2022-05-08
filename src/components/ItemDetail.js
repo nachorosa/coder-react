@@ -1,78 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { Link} from 'react-router-dom';
 import ItemCount from './ItemCount'
-import { productList } from '../data/data.js';
-import { Link, useParams } from 'react-router-dom';
 
-const ItemDetail = () => {
+const ItemDetail = ({ producto }) => {
+	const { title, price, stock, img, description, category, id } =
+		producto
 
-    const {Id} = useParams()
-    const [prod, setProd] = useState({})
-    
-    useEffect(() => {
-        const getProducts = new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve(productList);
-            }, 2000);
-        });
-    
-        getProducts.then(resutlt => {
-            productList.map(product => {
-                if(product.id == Id){
-                    setProd(product)
-                }
-            })
-        })
-    }, [Id])
-    
-    const [enCarrito , setEnCarrito] = useState(false)
+	const [terminar, setTerminar] = useState(false)
 
-    const onAdd = (count) => {
-        setEnCarrito(true)
-        console.log(count)
-    }
+	const onAdd = (count) => {
+		setTerminar(true)
+		console.log(count)
+	}
 
-  return (
-      <>
-
-        <div className="tienda">
-
-        
-            <div className=" card w-96 bg-base-100 shadow-xl">
-                <figure><img className='img-card' src={prod.img} alt="" /></figure>
-                <div class="card-body">
-                    <h2 className="card-title">{prod.name}</h2>
-                    <p>$ {prod.price} </p>
-                    <p>Stock: {prod.stock}</p>
-                    <div className="card-actions justify-end">
-                        
-
-                        {enCarrito ? (
-                             <div>
-                                <p>El producto esta en el Carrito!</p>
-                                 <Link to={`/cart`}><button className="btn btn-primary">VER CARRITO</button></Link>
-                             </div>
-                            ) : (
-                                <ItemCount stock={prod.stock} initial={1} onAdd={onAdd} />
-                                )}
-                                
-
-                        <Link to={`/`}><button className="btn btn-primary">Volver</button></Link>
-
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-      </>
-  )
+	return (
+		<>
+			<div className="hero  bg-base-200">
+				<div className="hero-content flex-col lg:flex-row">
+					<img
+						src={img}
+						className="max-w-sm rounded-lg shadow-2xl"
+						alt={`${category}, ${title}`}
+					/>
+					<div>
+						<h1 className="text-5xl font-bold">{title}</h1>
+						<p className="py-6">{description}</p>
+						<p className="py-6">Stock: {stock}</p>
+						<div className="inline-block align-bottom mr-5">
+							<span className="font-bold text-5xl leading-none align-baseline">
+								${price}
+							</span>
+							{terminar ? (
+								<Link to="/cart" className="btn bg-primary text-white btn-block ">VER CARRITO</Link>
+							) : (
+								<ItemCount stock={stock} onAdd={onAdd} id={id} />
+							)}
+                            <Link to={`/`}><button className="btn btn-primary">Volver</button></Link>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	)
 }
-
-
-
-
-
-
 
 export default ItemDetail

@@ -1,31 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import ItemCount from './ItemCount.js';
 
-import './styles/styles.css';
-
-const Item = ({ name, img, price, id, stock }) => {
+const Item = ({ producto }) => {
 
 
-    return (
-
-            <div className=" card w-96 bg-base-100 shadow-xl">
-                <figure><img className='img-card' src={img} alt="" /></figure>
-                <div class="card-body">
-                    <h2 className="card-title">{name}</h2>
-                    <p>$ {price} </p>
-                    <div className="card-actions justify-end">
-
-                        {/* <ItemCount stock={stock} initial={1} /> */}
-                        <Link to={`/item/${id}`}><button className="btn btn-primary">VER MAS</button></Link>
-
-                    </div>
-                </div>
-            </div>
+	const styles = {
+		header: "w-20"
+	  }
 
 
+	return (
+		<>
+			<div className="card card-compact w-60 bg-base-100 shadow-xl">
+				<figure>
+					<img src={producto.img} alt="" />
+				</figure>
+				<div className="card-body">
+					<h2 className="card-title">{producto.title}</h2>
+					<div className="inline-block align-bottom mr-5">
+						<span className="font-bold text-5xl leading-none align-baseline">
+							${producto.price}
+						</span>
+					</div>
+					<div className="card-actions justify-end">
+						<Link to={`/item/${producto.id}`} className="btn btn-primary">
+							Ver más
+						</Link>
+					</div>
+				</div>
+			</div>
+		</>
+	)
+}
 
-    );
-};
-
-export default Item;
+export default Item

@@ -1,41 +1,34 @@
-import logo from './logo.svg';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import DaisyNavBar from './components/DaisyNavBar';
-import Inicio from './components/Inicio';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import AppContextProvider from './components/context/AppContext';
+import CartContextProvider from './components/context/CartContext';
+import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
-//import ItemListContainer from './components/ItemListContainer';
-import ItemCategory from './components/ItemCategory';
-
+import DaisyNavBar from "./components/DaisyNavBar";
 
 
 function App() {
-
-    const styles = {
-      header: "text-red-600 bg-slate-300 text-4xl"
-    }
-
-  return (
-
-    <BrowserRouter>
-    
-    <div className="App">
-        <DaisyNavBar/>
- 
-        <h1 className={styles.header}>TOMAR-YA!</h1>
-      
-      <Routes>
-        
-      <Route path="/" element={<Inicio/> } />
-      <Route path="/category/:CatId" element={<ItemCategory/> } />
-      <Route path="/item/:Id" element={<ItemDetailContainer/> } />
-      <Route path="/Cart" element={<></>} />
-
-      </Routes>
-    </div>
-    </BrowserRouter>
-
-  );
+	return (
+		<>
+			<AppContextProvider>
+				<CartContextProvider>
+					<BrowserRouter>
+          <DaisyNavBar/>
+						<Routes>
+							<Route
+								path="/"
+								element={<ItemListContainer greetings={"Tienda-Ya"} />}
+							/>
+							<Route
+								path="/category/:categoryId"
+								element={<ItemListContainer />}
+							/>
+							<Route path="/item/:id" element={<ItemDetailContainer />} />
+						</Routes>
+					</BrowserRouter>
+				</CartContextProvider>
+			</AppContextProvider>
+		</>
+	)
 }
 
-export default App;
+export default App

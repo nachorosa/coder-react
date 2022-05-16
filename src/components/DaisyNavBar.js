@@ -17,14 +17,14 @@ const DaisyNavBar = () => {
 
         <div className="flex-2">
 
-        <div class="flex-none">
-            <ul class="menu menu-horizontal p-0">
+        <div className="flex-none">
+            <ul className="menu menu-horizontal p-0">
                 <li tabindex="0">
                     <a className="btn btn-ghost normal-case text-xl">
                     Categorias
-                    <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
                     </a>
-                        <ul class="p-2 bg-base-100">
+                        <ul className="p-2 bg-base-100">
                             {categorias.map(cat => {
                 return <li><Link to={`/category/${cat.categoria}`}><button>{cat.titulo}</button></Link></li>
             })}

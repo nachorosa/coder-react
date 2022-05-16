@@ -38,11 +38,11 @@ const ItemCount = ({ stock, onAdd, id }) => {
 			<div className="flex gap-4 mt-4">
 				<div className="flex flex-row">
 					<button className="btn " onClick={handleRemove}>
-						<i className="fas fa-minus"></i>
+						<i className="fas fa-minus">-</i>
 					</button>
 					<label className="alert alert-white">{count}</label>
 					<button className="btn " onClick={handleAdd}>
-						<i className="fas fa-plus"></i>
+						<i className="fas fa-plus">+</i>
 					</button>
 				</div>
 				<div>

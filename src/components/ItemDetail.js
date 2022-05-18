@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link} from 'react-router-dom';
 import ItemCount from './ItemCount'
+import { collection, getDocs, getFirestore } from "firebase/firestore"
 
 const ItemDetail = ({ producto }) => {
 	const { title, price, stock, img, description, category, id } =
@@ -12,6 +13,24 @@ const ItemDetail = ({ producto }) => {
 		setTerminar(true)
 		console.log(count)
 	}
+
+	// const [products, setProducts] = useState([])
+
+    // //captar datos de firebase
+    // useEffect(() => {
+    //     const db = getFirestore ()
+    //     const Collection = collection(db, 'items')
+    //     getDocs( Collection ).then ((snapshot) => { 
+    //         const productsList = []
+    //         snapshot.docs.forEach((s) => { 
+    //         console.log (s.data() );
+    //         productsList.push( {id: s.id, ...s.data()})
+    //     })
+    //     console.log(productsList);
+    //     setProducts ( productsList )
+    //     })
+
+    // }, [])
 
 	return (
 		<>

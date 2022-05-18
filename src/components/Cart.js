@@ -9,6 +9,11 @@ const Cart = () => {
     let precioTotal = 0
 
     useEffect(() => {
+
+        if(cart.length == 0){
+            setTotal(0)
+        }
+
         cart.forEach(prod => {
             precioTotal = precioTotal + (prod.price * prod.quantity)
             setTotal(precioTotal)

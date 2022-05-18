@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getItem } from "../data/data"
 import ItemList from './ItemList';
- 
+import { collection, getDocs, getFirestore } from "firebase/firestore"
+import Item from "./Item";
 
 
 const ItemListContainer = ({ greetings }) => {
-	const [category, setCategory] = useState()
+	
 	const { categoryId } = useParams()
 
-	useEffect(() => {
-		if (categoryId === undefined) {
-			getItem().then((resp) => setCategory(resp))
-		} else {
-			getItem().then((resp) =>
-				setCategory(resp.filter((product) => product.category === categoryId))
-			)
-		}
-	}, [categoryId])
+	const [products, setProducts] = useState([])
+
+    //captar datos de firebase
+    useEffect(() => {
+        const db = getFirestore ()
+        const Collection = collection(db, 'items')
+        getDocs( Collection ).then ((snapshot) => { 
+            const productsList = []
+            snapshot.docs.forEach((s) => { 
+            console.log (s.data() );
+            productsList.push( {id: s.id, ...s.data()})
+        })
+        console.log(productsList);
+        setProducts ( productsList )
+        })
+
+    }, [])
+
+
 
 	return (
 		<>
@@ -35,7 +45,13 @@ const ItemListContainer = ({ greetings }) => {
 				</div>
 			</div>
 			<div className="divider"></div>
-			<ItemList category={category} />
+			{	products.map(prod => {
+				if(prod.category == categoryId){
+					return <Item producto={prod} />
+				}else if(categoryId == undefined){
+					return <Item producto={prod} />
+				}
+	})}
 		</>
 	)
 }

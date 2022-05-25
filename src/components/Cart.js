@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useCartContext } from './context/CartContext';
@@ -23,6 +24,40 @@ const Cart = () => {
     const eliminar = (producto) => {
         deleteFromCart(producto)
     }
+
+
+    const finalizarCompra = async() => {
+
+        const comprador = {
+            name: 'ignacio Perez',
+            phone: '+541156636963',
+            email: 'ig@gmail.com'
+          }
+
+          const miCarrito = cart.map( ({id, title, price, quantity}) => ({id, title, price, quantity}) )
+
+          const compraFinalizada = {
+            // buyer
+            comprador: comprador,
+            // items
+            items: miCarrito,
+            // items: cart,
+            total: total
+          }
+
+        console.log('comprafinalizada', compraFinalizada)
+
+
+        const db = getFirestore();
+        const ordenCollection = collection(db, 'orden');
+    
+        const response = await addDoc(ordenCollection, compraFinalizada)
+        // console.log(response);
+        console.log("id compra: ", response.id);
+
+        <h1> {response.id}  </h1>
+    }
+
 
   return (
     <div>
@@ -53,9 +88,10 @@ const Cart = () => {
 
                 <div className="hero ">
                     <div className="hero-content flex-col lg:flex-row">
-                        <button className="btn">TOTAL: ${total}</button>
                         <Link to={`/`}><button className="btn">CONTINUAR COMPRANDO</button></Link> 
-                        <Link to={`/`}><button className="btn">COMPRAR</button></Link> 
+                        <button className="btn">TOTAL: ${total}</button>
+                        { total > 0 ? <button onClick={finalizarCompra} className="btn">FINALIZAR COMPRA  </button>  : "" }
+
                     </div>
 				</div>
 

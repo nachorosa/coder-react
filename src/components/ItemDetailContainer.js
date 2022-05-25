@@ -50,6 +50,7 @@ const ItemDetailContainer = () => {
                                     {inCart ? (
                                         <div>
                                         <p>El producto esta en el Carrito!</p>
+                                        <Link to={`/`}><button className="btn btn-primary">CONTINUAR COMPRANDO</button></Link>
                                         <Link to={`/cart`}><button className="btn btn-primary">VER CARRITO</button></Link>
                                         </div>
                                         ) : (

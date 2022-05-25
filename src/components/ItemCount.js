@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppContext } from './context/AppContext';
 import { useCartContext } from './context/CartContext';
 
@@ -46,12 +47,10 @@ const ItemCount = ({ stock, onAdd, id }) => {
 					</button>
 				</div>
 				<div>
-					<button
-						className="btn bg-primary text-white btn-block "
-						onClick={() => handleClick(id, count)}
-					>
-						Agregar al Carrito
-					</button>
+					<button className="btn bg-primary text-white btn-block " onClick={() => handleClick(id, count)} > Agregar al Carrito </button>
+					<br/>
+					<Link to={`/`}><button className="btn btn-primary">CONTINUAR COMPRANDO</button></Link>
+
 				</div>
 			</div>
 		</>

@@ -5,14 +5,11 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import DaisyNavBar from "./components/DaisyNavBar";
 import Cart from "./components/Cart";
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
   apiKey: "AIzaSyC8LyYVU4fcg_IuyrvzqqejjcHmMniLRv0",
   authDomain: "coderhouse-mitienda.firebaseapp.com",
@@ -23,7 +20,7 @@ const firebaseConfig = {
   measurementId: "G-TTNG72VKWD"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 

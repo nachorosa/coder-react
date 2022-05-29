@@ -26,40 +26,7 @@ const Cart = () => {
     }
 
 
-    const finalizarCompra = async() => {
-
-        const comprador = {
-            name: 'ignacio Perez',
-            phone: '+541156636963',
-            email: 'ig@gmail.com'
-          }
-
-          const miCarrito = cart.map( ({id, title, price, quantity}) => ({id, title, price, quantity}) )
-
-          const compraFinalizada = {
-            // buyer
-            comprador: comprador,
-            // items
-            items: miCarrito,
-            // items: cart,
-            total: total
-          }
-
-        console.log('comprafinalizada', compraFinalizada)
-
-
-        const db = getFirestore();
-        const ordenCollection = collection(db, 'orden');
-    
-        const response = await addDoc(ordenCollection, compraFinalizada)
-        // console.log(response);
-        console.log("id compra: ", response.id);
-
-        <h1> {response.id}  </h1>
-    }
-
-
-  return (
+    return (
     <div>
         <div className="productos">
             {
@@ -90,7 +57,9 @@ const Cart = () => {
                     <div className="hero-content flex-col lg:flex-row">
                         <Link to={`/`}><button className="btn">CONTINUAR COMPRANDO</button></Link> 
                         <button className="btn">TOTAL: ${total}</button>
-                        { total > 0 ? <button onClick={finalizarCompra} className="btn">FINALIZAR COMPRA  </button>  : "" }
+                        { total > 0 ?  <Link to={`/checkout`}><button className="btn">CHECKOUT</button></Link> : "" }
+
+                         
 
                     </div>
 				</div>

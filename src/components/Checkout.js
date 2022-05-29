@@ -1,18 +1,17 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { useCartContext } from './context/CartContext'
-
-
-
+import swal from 'sweetalert';
 
 const Checkout = () => {
     
     const { cart } = useCartContext()
     const [total, setTotal] = useState(0)
     let precioTotal = 0
+
+    let guardarid = ''
     
     useEffect(() => {
-
         cart.forEach(prod => {
             precioTotal = precioTotal + (prod.price * prod.quantity)
             setTotal(precioTotal)
@@ -44,13 +43,16 @@ const Checkout = () => {
         const ordenCollection = collection(db, 'orden');
     
         const response = await addDoc(ordenCollection, compraFinalizada)
-         console.log("asd",response.id);
         
-        return(
-            <h1>holaa</h1>
-        )
+        guardarid = response.id;
 
-       
+
+        swal("la id de tu compra es: ", response.id);
+
+
+        const btn = document.getElementById('finalizar')
+        btn.setAttribute("disabled", true)
+
     }
 
 
@@ -76,7 +78,12 @@ const Checkout = () => {
             </div>
         </form>
         <p className="btn">$ {total}</p>
-        <button onClick={finalizarCompra} className="btn">FINALIZAR COMPRA</button>
+        <button id="finalizar" onClick={finalizarCompra} className="btn">FINALIZAR COMPRA </button>
+
+        <button onClick={() => {
+            swal("la id de tu compra es: ", guardarid);
+        }} className="btn">IdCompra</button>
+
 
     </div>
   )

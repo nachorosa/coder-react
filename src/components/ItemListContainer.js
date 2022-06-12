@@ -6,26 +6,26 @@ import Item from "./Item";
 
 
 const ItemListContainer = ({ greetings }) => {
-	
+
 	const { categoryId } = useParams()
 
 	const [products, setProducts] = useState([])
 
-    //captar datos de firebase
-    useEffect(() => {
-        const db = getFirestore ()
-        const Collection = collection(db, 'items')
-        getDocs( Collection ).then ((snapshot) => { 
-            const productsList = []
-            snapshot.docs.forEach((s) => { 
-            console.log (s.data() );
-            productsList.push( {id: s.id, ...s.data()})
-        })
-        console.log(productsList);
-        setProducts ( productsList )
-        })
+	//captar datos de firebase
+	useEffect(() => {
+		const db = getFirestore()
+		const Collection = collection(db, 'items')
+		getDocs(Collection).then((snapshot) => {
+			const productsList = []
+			snapshot.docs.forEach((s) => {
+				console.log(s.data());
+				productsList.push({ id: s.id, ...s.data() })
+			})
+			console.log(productsList);
+			setProducts(productsList)
+		})
 
-    }, [])
+	}, [])
 
 
 
@@ -44,14 +44,16 @@ const ItemListContainer = ({ greetings }) => {
 					</div>
 				</div>
 			</div>
-			<div className="divider"></div>
-			{	products.map(prod => {
-				if(prod.category == categoryId){
-					return <Item producto={prod} />
-				}else if(categoryId == undefined){
-					return <Item producto={prod} />
-				}
-	})}
+			<div className="flex h-50 w-50">
+
+				{products.map(prod => {
+					if (prod.category == categoryId) {
+						return <Item producto={prod} />
+					} else if (categoryId == undefined) {
+						return <Item producto={prod} />
+					}
+				})}
+			</div>
 		</>
 	)
 }

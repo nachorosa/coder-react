@@ -57,10 +57,7 @@ const Cart = () => {
                     <div className="hero-content flex-col lg:flex-row">
                         <Link to={`/`}><button className="btn">CONTINUAR COMPRANDO</button></Link> 
                         <button className="btn">TOTAL: ${total}</button>
-                        { total > 0 ?  <Link to={`/checkout`}><button className="btn">CHECKOUT</button></Link> : "" }
-
-                         
-
+                        { total > 0 ? <Link to={`/checkout`}><button className="btn">CHECKOUT</button></Link> : "" }
                     </div>
 				</div>
 

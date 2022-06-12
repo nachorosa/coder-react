@@ -37,16 +37,17 @@ const ItemDetailContainer = () => {
                     console.log(prod);
                     if(id == prod.id){
                     return <div>
-                        <div className='itemDetail'>
-                            <div className="itemDetail_content shadow-2xl flex flex-col">
-                                <div className='mb-2'>
-                                    <ul className='mb-2'>
-                                    <li>{prod.id}</li>
-                                    <li>{prod.title}</li>
-                                    <li>{prod.price}</li>
-                                    <li>{prod.category}</li>
-                                    <li><img src={prod.img} alt="Shoes"/></li>
-                                    </ul>
+
+
+            <div className="hero  bg-base-200">
+				<div className="hero-content flex-col lg:flex-row">
+					<img
+						src={prod.img}
+						className="max-w-sm rounded-lg shadow-2xl"
+					/>
+					<div>
+						<h1 className="text-5xl font-bold">{prod.title}</h1>
+                        <p className="py-6">PRECIO: {prod.price}</p>
                                     {inCart ? (
                                         <div>
                                         <p>El producto esta en el Carrito!</p>

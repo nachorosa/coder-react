@@ -59,30 +59,41 @@ const Checkout = () => {
 
   return (
     <div>
-        <h2>FINALIZAR COMPRA!!</h2>
-        <form>
+        <form className='hero  bg-base-200'>
             <div>
-                <input id="nombre" type="text" placeholder='Nombre' className="btn"/>
-            </div>
-            <div>
-                <input id="apellido" type="text" placeholder='Apellido' className="btn"/>
-            </div>
-            <div>
-                <input id="direccion" type="text" placeholder='Direccion' className="btn"/>
-            </div>
-            <div>
-                <input id="telefono" type="number" placeholder='Telefono' className="btn"/>
-            </div>
-            <div>
-                <input id="email" type="email" placeholder='Email' className="btn"/>
+
+                <div className='hero-content flex-col lg:flex-row'>
+                    <input id="nombre" type="text" placeholder='Nombre' className="btn"/>
+                </div>
+                <div className='hero-content flex-col lg:flex-row'>
+                    <input id="apellido" type="text" placeholder='Apellido' className="btn"/>
+                </div>
+                <div className='hero-content flex-col lg:flex-row'>
+                    <input id="direccion" type="text" placeholder='Direccion' className="btn"/>
+                </div>
+                <div className='hero-content flex-col lg:flex-row'>
+                    <input id="telefono" type="number" placeholder='Telefono' className="btn"/>
+                </div>
+                <div className='hero-content flex-col lg:flex-row'>
+                    <input id="email" type="email" placeholder='Email' className="btn"/>
+                </div>
             </div>
         </form>
-        <p className="btn">$ {total}</p>
-        <button id="finalizar" onClick={finalizarCompra} className="btn">FINALIZAR COMPRA </button>
+       
 
-        <button onClick={() => {
-            swal("la id de tu compra es: ", guardarid);
-        }} className="btn">IdCompra</button>
+        
+
+        <div className="hero ">
+<div className="hero-content flex-col lg:flex-row">
+     <p className="btn">$ {total}</p>
+    { total > 0 ? <button id="finalizar" onClick={() => finalizarCompra()} className="btn">FINALIZAR COMPRA</button> : "" }
+            <button onClick={() => {
+    swal("la id de tu compra es: ", guardarid);
+}} className="btn">IdCompra</button>
+</div>
+</div>
+
+
 
 
     </div>
@@ -90,4 +101,6 @@ const Checkout = () => {
 }
 
 export default Checkout
+
+
 
